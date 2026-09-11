@@ -109,4 +109,4 @@ GUEST_DESKTOP_AGENTS=(
 #    else
 #        echo "No excluded packages found to remove."
 #    fi
-fi
+#fi
