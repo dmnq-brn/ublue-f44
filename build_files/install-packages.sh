@@ -101,12 +101,12 @@ GUEST_DESKTOP_AGENTS=(
 )
 
 # Install packages
-if [[ "${#SHARED_PACKAGES[@]}" -gt 0 ]]; then
-    readarray -t UINSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FONTS_PACKAGES[@]}" 2>/dev/null || true)
-    if [[ "${#UINSTALLED[@]}" -gt 0 ]]; then
-        echo "Installing ${#UINSTALLED[@]} packages from repos..."
-        dnf -y --setopt=install_weak_deps=False install "${UINSTALLED[@]}"
-    else
-        echo "No excluded packages found to remove."
-    fi
+#if [[ "${#SHARED_PACKAGES[@]}" -gt 0 ]]; then
+#    readarray -t UINSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FONTS_PACKAGES[@]}" 2>/dev/null || true)
+#    if [[ "${#UINSTALLED[@]}" -gt 0 ]]; then
+#        dnf -y --setopt=install_weak_deps=False install "${UINSTALLED[@]}"
+        dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FONTS_PACKAGES[@]}"
+#    else
+#        echo "No excluded packages found to remove."
+#    fi
 fi
