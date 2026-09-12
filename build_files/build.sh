@@ -15,8 +15,8 @@ cp -avf "/ctx/system_files"/. /
 rm /etc/yum.repos.d/*.repo
 
 ### remove fedora flatpack hub
-flatpack remote-delete fedora
-flatpack remote-delete fedora-testing
+flatpak remote-delete fedora
+flatpak remote-delete fedora-testing
 
 ### add flathub repository
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
