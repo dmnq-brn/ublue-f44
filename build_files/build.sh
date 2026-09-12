@@ -5,11 +5,27 @@ set -euxo pipefail
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
 
-### Install required packages
+### Install required OS packages
 /ctx/install-packages.sh
 
-### remove 
+### Remove unwanted OS package 
 # /ctx/remove-packages.sh
+
+### remove dnf repository
+rm /etc/yum.repos.d/*.repo
+
+### remove fedora flatpack hub
+flatpack remote-delete fedora
+flatpack remote-delete fedora-testing
+
+### add flathub repository
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+### install flatpack app
+
+flatpak install flathub org.mozilla.firefox
+flatpak install flathub net.nokyan.Resources
+flatpak install flathub com.mattjakeman.ExtensionManager
 
 #### Example for enabling a System Unit File
 
