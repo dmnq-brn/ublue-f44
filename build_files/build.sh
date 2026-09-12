@@ -15,17 +15,17 @@ cp -avf "/ctx/system_files"/. /
 rm /etc/yum.repos.d/*.repo
 
 ### remove fedora flatpack hub
-flatpak remote-delete fedora
-flatpak remote-delete fedora-testing
+#flatpak remote-delete fedora
+#flatpak remote-delete fedora-testing
 
 ### add flathub repository
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 ### install flatpack app
 
-flatpak install flathub org.mozilla.firefox
-flatpak install flathub net.nokyan.Resources
-flatpak install flathub com.mattjakeman.ExtensionManager
+#flatpak install flathub org.mozilla.firefox
+#flatpak install flathub net.nokyan.Resources
+#flatpak install flathub com.mattjakeman.ExtensionManager
 
 #### Example for enabling a System Unit File
 
