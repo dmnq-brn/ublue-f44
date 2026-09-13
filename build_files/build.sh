@@ -12,7 +12,7 @@ cp -avf "/ctx/system_files"/. /
 # /ctx/remove-packages.sh
 
 ### remove dnf repository
-rm /etc/yum.repos.d/*.repo
+# rm /etc/yum.repos.d/*.repo
 
 ### remove fedora flatpak remote
 #flatpak remote-delete fedora
