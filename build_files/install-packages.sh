@@ -16,7 +16,6 @@ SHARED_PACKAGES=(
     fprintd-pam
     gdm
     glibc-all-langpacks
-    gnome-bluetooth
     gnome-control-center
     gnome-disk-utility
 #    gnome-initial-setup
@@ -58,6 +57,11 @@ WIFI-PACKAGES=(
     iwlwifi-dvm-firmware
     iwlwifi-mvm-firmware
     NetworkManager-wifi
+)
+
+BLUETOOTH_PACKAGES=(
+    bluez
+    gnome-bluetooth
 )
 
 # centos specific packages
