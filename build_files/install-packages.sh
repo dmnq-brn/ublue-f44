@@ -47,6 +47,7 @@ SHARED_PACKAGES=(
 )
 
 DEVELOPMENT_PACKAGES=(
+    toolbox
     distrobox
     git-core
     git-core-doc
@@ -110,13 +111,13 @@ GUEST_DESKTOP_AGENTS=(
 #    spice-vdagent
 )
 
-# Install packages
-#if [[ "${#SHARED_PACKAGES[@]}" -gt 0 ]]; then
-#    readarray -t UINSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FONTS_PACKAGES[@]}" 2>/dev/null || true)
-#    if [[ "${#UINSTALLED[@]}" -gt 0 ]]; then
-#        dnf -y --setopt=install_weak_deps=False install "${UINSTALLED[@]}"
-        dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FONTS_PACKAGES[@]}"
-#    else
-#        echo "No excluded packages found to remove."
-#    fi
-#fi
+# Install required packages
+dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}"
+
+# remove unwanted packages
+    readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" 2>/dev/null || true)
+    if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
+        dnf -y --setopt=install_weak_deps=False install "${UINSTALLED[@]}"
+    else
+       echo "No excluded packages found to remove."
+    fi
