@@ -115,9 +115,11 @@ GUEST_DESKTOP_AGENTS=(
 dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}"
 
 # remove unwanted packages
-    readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" 2>/dev/null || true)
-    if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
-        dnf -y --setopt=install_weak_deps=False install "${UINSTALLED[@]}"
-    else
-       echo "No excluded packages found to remove."
-    fi
+readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" 2>/dev/null || true)
+if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
+    dnf -y --setopt=install_weak_deps=False remove "${UINSTALLED[@]}"
+else
+    echo "No excluded packages found to remove."
+fi
+
+dnf - y upgrade
