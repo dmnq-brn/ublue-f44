@@ -109,8 +109,8 @@ UNVANTED_PACKAGES=(
     NetworkManager-ppp
     NetworkManager-team
     NetworkManager-wwan
-    # gweather-locations
-    # gweather-locations-common
+    gweather-locations
+    gweather-locations-common
     # totem-pl-parser
 )
 
