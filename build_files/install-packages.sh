@@ -117,7 +117,7 @@ dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST
 # remove unwanted packages
 readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" 2>/dev/null || true)
 if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
-    dnf -y --setopt=install_weak_deps=False remove "${UINSTALLED[@]}"
+    dnf -y remove "${INSTALLED[@]}"
 else
     echo "No excluded packages found to remove."
 fi
