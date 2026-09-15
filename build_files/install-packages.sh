@@ -123,7 +123,7 @@ GUEST_DESKTOP_AGENTS=(
 dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}"
 
 # remove unwanted packages
-readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" "${OPENSSH_SERVER[@]}"2>/dev/null || true)
+readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" "${OPENSSH_SERVER[@]}" 2>/dev/null || true)
 if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
     dnf -y remove "${INSTALLED[@]}"
 else
