@@ -102,16 +102,16 @@ OPENSSH_SERVER=(
 )
 
 UNVANTED_PACKAGES=(
-    # ModemManager-glib
+    ModemManager-glib
     NetworkManager-adsl
     NetworkManager-cloud-setup
     NetworkManager-ovs
     NetworkManager-ppp
     NetworkManager-team
     NetworkManager-wwan
-    gweather-locations
-    gweather-locations-common
-    # totem-pl-parser
+    # gweather-locations
+    # gweather-locations-common
+    totem-pl-parser
 )
 
 # Guest Desktop Agents
