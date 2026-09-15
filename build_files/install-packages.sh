@@ -5,7 +5,6 @@ set -ouex pipefail
 # Base packages from repos - common to all versions
 SHARED_PACKAGES=(
     # Gnome minimal desktop
-    NetworkManager-wifi
     # PackageKit-command-not-found
     # PackageKit-gtk3-module
     audit
@@ -13,26 +12,20 @@ SHARED_PACKAGES=(
     # bpftool
     dconf
     dnsmasq
-    distrobox
     firewalld
     fprintd-pam
-    git-core
-    git-core-doc
     gdm
     glibc-all-langpacks
     gnome-bluetooth
     gnome-control-center
     gnome-disk-utility
-    gnome-initial-setup
+#    gnome-initial-setup
     gnome-session-wayland-session
     gnome-settings-daemon
     gnome-shell
     # gnome-shell-extension-background-logo
     gnome-software
     # gvfs-fuse
-    iw
-    iwlwifi-dvm-firmware
-    iwlwifi-mvm-firmware
     mesa-dri-drivers
     mesa-vulkan-drivers
     nautilus
@@ -52,6 +45,19 @@ SHARED_PACKAGES=(
     xdg-user-dirs-gtk
     # yelp-tools
     vim-enhanced
+)
+
+DEVLOPMENT_PACKAGES=(
+    distrobox
+    git-core
+    git-core-doc
+)
+
+WIFI-PACKAGES=(
+    iw
+    iwlwifi-dvm-firmware
+    iwlwifi-mvm-firmware
+    NetworkManager-wifi
 )
 
 # centos specific packages
