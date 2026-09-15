@@ -94,7 +94,7 @@ FEDORA_PACKAGES=(
 
 )
 
-OPENSSH-SERVER=(
+OPENSSH_SERVER=(
     openssh-server
 )
 
