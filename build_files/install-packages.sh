@@ -85,7 +85,7 @@ BLUETOOTH_PACKAGES=(
     NetworkManager-bluetooth
     bluez
     gnome-bluetooth
-    gnome-bluetooth-libs
+    # gnome-bluetooth-libs
 )
 
 # centos specific packages
@@ -102,7 +102,7 @@ OPENSSH_SERVER=(
 )
 
 UNVANTED_PACKAGES=(
-    #ModemManager-glib
+    ModemManager-glib
     NetworkManager-adsl
     NetworkManager-cloud-setup
     NetworkManager-ovs
