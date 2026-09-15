@@ -46,13 +46,13 @@ SHARED_PACKAGES=(
     vim-enhanced
 )
 
-DEVLOPMENT_PACKAGES=(
+DEVELOPMENT_PACKAGES=(
     distrobox
     git-core
     git-core-doc
 )
 
-WIFI-PACKAGES=(
+WIFI_PACKAGES=(
     iw
     iwlwifi-dvm-firmware
     iwlwifi-mvm-firmware
