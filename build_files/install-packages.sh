@@ -51,18 +51,38 @@ DEVELOPMENT_PACKAGES=(
     distrobox
     git-core
     git-core-doc
+    qemu-user-static
+    qemu-user-static-aarch64
+    qemu-user-static-alpha
+    qemu-user-static-arm
+    qemu-user-static-hexagon
+    qemu-user-static-hppa
+    qemu-user-static-loongarch64
+    qemu-user-static-m68k
+    qemu-user-static-microblaze
+    qemu-user-static-mips
+    qemu-user-static-or1k
+    qemu-user-static-ppc
+    qemu-user-static-riscv
+    qemu-user-static-s390x
+    qemu-user-static-sh4
+    qemu-user-static-sparc
+    qemu-user-static-x86
+    qemu-user-static-xtensa
 )
 
 WIFI_PACKAGES=(
+    NetworkManager-wifi
     iw
     iwlwifi-dvm-firmware
     iwlwifi-mvm-firmware
-    NetworkManager-wifi
 )
 
 BLUETOOTH_PACKAGES=(
+    NetworkManager-bluetooth
     bluez
     gnome-bluetooth
+    gnome-bluetooth-libs
 )
 
 # centos specific packages
@@ -74,33 +94,21 @@ FEDORA_PACKAGES=(
 
 )
 
-FONTS_PACKAGES=(
-    default-fonts-cjk-mono
-    default-fonts-cjk-sans
-    default-fonts-cjk-serif
-    default-fonts-core-emoji
-    default-fonts-core-math 
-    default-fonts-core-mono
-    default-fonts-core-sans
-    default-fonts-core-serif
-    default-fonts-other-mono
-    default-fonts-other-sans
-    default-fonts-other-serif
-    dejavu-sans-fonts
-    dejavu-sans-mono-fonts
-    dejavu-serif-fonts
-    google-carlito-fonts
-    google-crosextra-caladea-fonts
-    google-droid-sans-fonts
-    google-droid-sans-mono-fonts
-    google-droid-serif-fonts
-    google-noto-emoji-fonts
-    google-noto-fonts-all
-    google-noto-sans-cjk-fonts
-    google-roboto-slab-fonts pt-sans-fonts
-    redhat-display-vf-fonts
-    redhat-mono-vf-fonts
-    redhat-text-vf-fonts    
+OPENSSH-SERVER=(
+    openssh-server
+)
+
+UNVANTED_PACKAGES=(
+    ModemManager-glib
+    NetworkManager-adsl
+    NetworkManager-cloud-setup
+    NetworkManager-ovs
+    NetworkManager-ppp
+    NetworkManager-team
+    NetworkManager-wwan
+    gweather-locations
+    gweather-locations-common
+    totem-pl-parser
 )
 
 # Guest Desktop Agents
@@ -115,7 +123,7 @@ GUEST_DESKTOP_AGENTS=(
 dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}"
 
 # remove unwanted packages
-readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" 2>/dev/null || true)
+readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" "${OPENSSH-SERVER[@]}"2>/dev/null || true)
 if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
     dnf -y remove "${INSTALLED[@]}"
 else
