@@ -122,4 +122,4 @@ else
     echo "No excluded packages found to remove."
 fi
 
-dnf - y upgrade
+dnf -y upgrade
