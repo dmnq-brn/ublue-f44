@@ -51,6 +51,9 @@ DEVELOPMENT_PACKAGES=(
     distrobox
     git-core
     git-core-doc
+)
+
+QEMU_PACKAGES=(
     qemu-user-static
     qemu-user-static-aarch64
     qemu-user-static-alpha
@@ -82,7 +85,7 @@ BLUETOOTH_PACKAGES=(
     NetworkManager-bluetooth
     bluez
     gnome-bluetooth
-    gnome-bluetooth-libs
+    # gnome-bluetooth-libs
 )
 
 # centos specific packages
@@ -91,7 +94,7 @@ CENTOS_PACKAGES=(
 )
 
 FEDORA_PACKAGES=(
-
+    desktop-backgrounds-gnome
 )
 
 OPENSSH_SERVER=(
@@ -120,10 +123,10 @@ GUEST_DESKTOP_AGENTS=(
 )
 
 # Install required packages
-dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}"
+dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FEDORA_PACKAGES[@]}"
 
 # remove unwanted packages
-readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" "${OPENSSH_SERVER[@]}" 2>/dev/null || true)
+readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" "${OPENSSH_SERVER[@]}" "${QEMU_PACKAGES[@]}" 2>/dev/null || true)
 if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
     dnf -y remove "${INSTALLED[@]}"
 else
