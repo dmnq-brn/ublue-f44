@@ -102,7 +102,7 @@ OPENSSH_SERVER=(
 )
 
 UNVANTED_PACKAGES=(
-    ModemManager-glib
+    # ModemManager-glib
     NetworkManager-adsl
     NetworkManager-cloud-setup
     NetworkManager-ovs
