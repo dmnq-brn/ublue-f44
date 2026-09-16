@@ -4,16 +4,27 @@ set -ouex pipefail
 
 # Base packages from repos - common to all versions
 SHARED_PACKAGES=(
-    # Gnome minimal desktop
     # PackageKit-command-not-found
     # PackageKit-gtk3-module
     audit
     bootc
     # bpftool
-    dconf
     dnsmasq
     firewalld
     fprintd-pam
+    plymouth
+    plymouth-system-theme
+    polkit
+    rsync
+    realmd
+    smartmontools
+    vim-enhanced
+)
+
+GNOME_PACKAGES=(
+    # Gnome minimal desktop
+    # ModemManager-glib
+    dconf
     gdm
     glibc-all-langpacks
     gnome-control-center
@@ -29,13 +40,7 @@ SHARED_PACKAGES=(
     mesa-vulkan-drivers
     nautilus
     # orca
-    plymouth
-    plymouth-system-theme
-    polkit
     ptyxis
-    rsync
-    realmd
-    smartmontools
     tracker
     tracker-miners
     xdg-desktop-portal
@@ -43,7 +48,6 @@ SHARED_PACKAGES=(
     xdg-desktop-portal-gtk
     xdg-user-dirs-gtk
     # yelp-tools
-    vim-enhanced
 )
 
 DEVELOPMENT_PACKAGES=(
@@ -102,16 +106,15 @@ OPENSSH_SERVER=(
 )
 
 UNVANTED_PACKAGES=(
-    # ModemManager-glib
     NetworkManager-adsl
     NetworkManager-cloud-setup
     NetworkManager-ovs
     NetworkManager-ppp
     NetworkManager-team
     NetworkManager-wwan
-    # gweather-locations
-    # gweather-locations-common
-    # totem-pl-parser
+    gweather-locations
+    gweather-locations-common
+    totem-pl-parser
 )
 
 # Guest Desktop Agents
@@ -123,7 +126,7 @@ GUEST_DESKTOP_AGENTS=(
 )
 
 # Install required packages
-dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FEDORA_PACKAGES[@]}"
+dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GNOME_DESKTOP_AGENTS[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FEDORA_PACKAGES[@]}"
 
 # remove unwanted packages
 readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" "${QEMU_PACKAGES[@]}" "${OPENSSH_SERVER[@]}" 2>/dev/null || true)
