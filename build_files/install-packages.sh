@@ -25,6 +25,7 @@ GNOME_PACKAGES=(
     # ModemManager-glib
     dconf
     fprintd-pam
+    flatpak
     gdm
     glibc-all-langpacks
     gnome-control-center
