@@ -56,7 +56,7 @@ GNOME_DESKTOP_PACKAGES=(
 )
 
 DEVELOPMENT_PACKAGES=(
-    toolbox
+    # toolbox
     distrobox
     git-core
     git-core-doc
@@ -128,10 +128,10 @@ GUEST_AGENTS_PACKAGES=(
 )
 
 # Install required packages
-dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GNOME_DESKTOP_PACKAGES[@]}" "${GUEST_AGENTS_PACKAGES[@]}" "${FEDORA_PACKAGES[@]}"
+dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GNOME_DESKTOP_PACKAGES[@]}" "${GUEST_AGENTS_PACKAGES[@]}" "${FEDORA_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}"
 
 # remove unwanted packages
-readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" "${QEMU_PACKAGES[@]}" "${OPENSSH_SERVER[@]}" 2>/dev/null || true)
+readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${QEMU_PACKAGES[@]}" "${OPENSSH_SERVER[@]}" 2>/dev/null || true)
 if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
     dnf -y remove "${INSTALLED[@]}"
 else
