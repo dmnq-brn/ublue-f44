@@ -93,7 +93,7 @@ BLUETOOTH_PACKAGES=(
     NetworkManager-bluetooth
     bluez
     gnome-bluetooth
-    gnome-bluetooth-libs
+    # gnome-bluetooth-libs
 )
 
 # centos specific packages
