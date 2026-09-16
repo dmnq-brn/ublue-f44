@@ -11,7 +11,6 @@ SHARED_PACKAGES=(
     # bpftool
     dnsmasq
     firewalld
-    fprintd-pam
     plymouth
     plymouth-system-theme
     polkit
@@ -25,6 +24,7 @@ GNOME_PACKAGES=(
     # Gnome minimal desktop
     # ModemManager-glib
     dconf
+    fprintd-pam
     gdm
     glibc-all-langpacks
     gnome-control-center
