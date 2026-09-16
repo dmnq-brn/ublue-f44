@@ -44,7 +44,6 @@ GNOME_DESKTOP_PACKAGES=(
     nautilus
     # orca
     ptyxis
-    # totem-pl-parser
     tracker
     tracker-miners
     xdg-desktop-portal
@@ -116,6 +115,7 @@ UNVANTED_PACKAGES=(
     NetworkManager-ppp
     NetworkManager-team
     NetworkManager-wwan
+    totem-pl-parser
 )
 
 # Guest Desktop Agents
