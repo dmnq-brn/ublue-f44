@@ -22,6 +22,7 @@ SHARED_PACKAGES=(
 
 GNOME_DESKTOP_PACKAGES=(
     # Gnome minimal desktop
+    # ModemManager-glib required by gnome-control-center
     dconf
     fprintd-pam
     flatpak
@@ -83,7 +84,6 @@ QEMU_PACKAGES=(
 )
 
 WIFI_PACKAGES=(
-    ModemManager-glib
     NetworkManager-wifi
     iw
     iwlwifi-dvm-firmware
