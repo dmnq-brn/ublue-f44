@@ -111,7 +111,7 @@ UNVANTED_PACKAGES=(
     NetworkManager-wwan
     # gweather-locations
     # gweather-locations-common
-    totem-pl-parser
+    # totem-pl-parser
 )
 
 # Guest Desktop Agents
