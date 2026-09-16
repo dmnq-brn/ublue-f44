@@ -37,11 +37,14 @@ GNOME_DESKTOP_PACKAGES=(
     # gnome-shell-extension-background-logo
     gnome-software
     # gvfs-fuse
+    # gweather-locations
+    # gweather-locations-common
     mesa-dri-drivers
     mesa-vulkan-drivers
     nautilus
     # orca
     ptyxis
+    # totem-pl-parser
     tracker
     tracker-miners
     xdg-desktop-portal
@@ -113,9 +116,6 @@ UNVANTED_PACKAGES=(
     NetworkManager-ppp
     NetworkManager-team
     NetworkManager-wwan
-    gweather-locations
-    gweather-locations-common
-    totem-pl-parser
 )
 
 # Guest Desktop Agents
