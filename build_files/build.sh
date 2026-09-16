@@ -20,7 +20,7 @@ cp -avf "/ctx/system_files"/. /
 #systemctl disable flatpak-add-fedora-repos.service
 
 ### add flathub repository
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+# flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 ### install flatpack app
 
