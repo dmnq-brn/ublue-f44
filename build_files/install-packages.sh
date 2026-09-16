@@ -22,7 +22,6 @@ SHARED_PACKAGES=(
 
 GNOME_DESKTOP_PACKAGES=(
     # Gnome minimal desktop
-    # ModemManager-glib
     dconf
     fprintd-pam
     flatpak
@@ -44,6 +43,7 @@ GNOME_DESKTOP_PACKAGES=(
     nautilus
     # orca
     ptyxis
+    # required by Nautilus
     # totem-pl-parser
     tracker
     tracker-miners
@@ -83,6 +83,7 @@ QEMU_PACKAGES=(
 )
 
 WIFI_PACKAGES=(
+    ModemManager-glib
     NetworkManager-wifi
     iw
     iwlwifi-dvm-firmware
