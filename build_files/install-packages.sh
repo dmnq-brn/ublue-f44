@@ -20,7 +20,7 @@ SHARED_PACKAGES=(
     vim-enhanced
 )
 
-GNOME_PACKAGES=(
+GNOME_DESKTOP_PACKAGES=(
     # Gnome minimal desktop
     # ModemManager-glib
     dconf
@@ -119,7 +119,7 @@ UNVANTED_PACKAGES=(
 )
 
 # Guest Desktop Agents
-GUEST_DESKTOP_AGENTS=(
+GUEST_AGENTS_PACKAGES=(
     hyperv-daemons
 #    open-vm-tools-desktop
 #    qemu-guest-agent
@@ -127,7 +127,7 @@ GUEST_DESKTOP_AGENTS=(
 )
 
 # Install required packages
-dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GNOME_DESKTOP_AGENTS[@]}" "${GUEST_DESKTOP_AGENTS[@]}" "${FEDORA_PACKAGES[@]}"
+dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GNOME_DESKTOP_PACKAGES[@]}" "${GUEST_AGENTS_PACKAGES[@]}" "${FEDORA_PACKAGES[@]}"
 
 # remove unwanted packages
 readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}" "${QEMU_PACKAGES[@]}" "${OPENSSH_SERVER[@]}" 2>/dev/null || true)
