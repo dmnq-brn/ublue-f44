@@ -30,7 +30,7 @@ GNOME_DESKTOP_PACKAGES=(
     glibc-all-langpacks
     gnome-control-center
     gnome-disk-utility
-#    gnome-initial-setup
+    gnome-initial-setup
     gnome-session-wayland-session
     gnome-settings-daemon
     gnome-shell
