@@ -17,12 +17,14 @@ SHARED_PACKAGES=(
     rsync
     realmd
     smartmontools
+    usbguard
     vim-enhanced
 )
 
 GNOME_DESKTOP_PACKAGES=(
     # Gnome minimal desktop
     # ModemManager-glib required by gnome-control-center
+    centos-backgrounds
     dconf
     fprintd-pam
     flatpak
@@ -100,15 +102,6 @@ GNOME_BLUETOOTH_PACKAGES=(
     # gnome-bluetooth-libs
 )
 
-# centos specific packages
-CENTOS_PACKAGES=(
-    centos-backgrounds
-)
-
-FEDORA_PACKAGES=(
-    desktop-backgrounds-gnome
-)
-
 OPENSSH_SERVER_PACKAGES=(
     openssh-server
 )
@@ -134,11 +127,66 @@ GUEST_AGENTS_PACKAGES=(
 #    spice-vdagent
 )
 
+SERVER_PACKAGES=(
+    "${SHARED_PACKAGES[@]}"
+    "${GUEST_AGENTS_PACKAGES[@]}"
+    "${OPENSSH_SERVER_PACKAGES[@]}"
+)
+
+DEVELOPMENT_SERVER_PACKAGES=(
+    "${SERVER_PACKAGES[@]}"
+    "${DEVELOPMENT_PACKAGES[@]}"
+)
+
+UNVANTED_DEVELOPMENT_SERVER_PACKAGES=(
+    "${UNVANTED_PACKAGES[@]}"
+    "${GNOME_DESKTOP_PACKAGES[@]}"
+    "${BLUETOOTH_PACKAGES[@]}"
+    "${GNOME_BLUETOOTH_PACKAGES[@]}"
+    "${WIFI_PACKAGES[@]}"
+    "${OPENSSH_CLIENT_PACKAGES[@]}"
+    "${QEMU_PACKAGES[@]}"
+)
+
+UNVANTED_SERVER_PACKAGES=(
+    "${UNVANTED_DEVELOPMENT_SERVER_PACKAGES[@]}"
+    "${DEVELOPMENT_PACKAGES[@]}"
+)
+
+WORKSTATION_PACKAGES=(
+    "${SHARED_PACKAGES[@]}"
+    "${GNOME_DESKTOP_PACKAGES[@]}"
+    "${GUEST_AGENTS_PACKAGES[@]}"
+    "${OPENSSH_CLIENT_PACKAGES[@]}"
+)
+
+DEVELOPMENT_WORKSTATION_PACKAGES=(
+    "${SHARED_PACKAGES[@]}"
+    "${GNOME_DESKTOP_PACKAGES[@]}"
+    *"${GUEST_AGENTS_PACKAGES[@]}"
+    "${OPENSSH_CLIENT_PACKAGES[@]}"
+    "${DEVELOPMENT_PACKAGES[@]}"
+)
+
+UNVANTED_DEVELOPMENT_WORKSTATION_PACKAGES=(
+    "${UNVANTED_PACKAGES[@]}"
+    "${BLUETOOTH_PACKAGES[@]}" 
+    "${GNOME_BLUETOOTH_PACKAGES[@]}" 
+    "${WIFI_PACKAGES[@]}" 
+    "${OPENSSH_SERVER_PACKAGES[@]}" 
+    "${QEMU_PACKAGES[@]}"
+)
+
+UNVANTED_WORKSTATION_PACKAGES=(
+    "${UNVANTED_DEVELOPMENT_WORKSTATION_PACKAGES[@]}"
+    "${DEVELOPMENT_PACKAGES[@]}"
+)
+
 # Install required packages
-dnf -y --setopt=install_weak_deps=False install "${SHARED_PACKAGES[@]}" "${GNOME_DESKTOP_PACKAGES[@]}" "${GUEST_AGENTS_PACKAGES[@]}" "${OPENSSH_CLIENT_PACKAGES[@]}" "${FEDORA_PACKAGES[@]}" "${DEVELOPMENT_PACKAGES[@]}"
+dnf -y --setopt=install_weak_deps=False install "${WORKSTATION_PACKAGES[@]}"
 
 # remove unwanted packages
-readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_PACKAGES[@]}" "${BLUETOOTH_PACKAGES[@]}" "${GNOME_BLUETOOTH_PACKAGES[@]}" "${WIFI_PACKAGES[@]}" "${OPENSSH_SERVER_PACKAGES[@]}" "${QEMU_PACKAGES[@]}" 2>/dev/null || true)
+readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_WORKSTATION_PACKAGES[@]}" 2>/dev/null || true)
 if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
     dnf -y remove "${INSTALLED[@]}"
 else
