@@ -5,6 +5,19 @@ set -euxo pipefail
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
 
+### Setup Systemd
+
+### remove systemd unwanted services
+## fedora flatpak remote repository
+systemctl disable flatpak-add-fedora-repos.service
+rm /usr/lib/systemd/system/flatpak-add-fedora-repos.service
+
+# rpm-ostree
+systemctl disable rpm-ostree-countme.service
+rm /usr/lib/systemd/system/rpm-ostree-countme.service
+systemctl disable rpm-ostree-countme.timer
+rm /usr/lib/systemd/system/rpm-ostree-countme.timer
+
 ### Install required OS packages
 /ctx/install-packages.sh
 
@@ -22,12 +35,6 @@ cp -avf "/ctx/system_files"/. /
 rm /usr/share/dconf/profile/gnome-initial-setup
 rm /usr/share/gnome-initial-setup/initial-setup-dconf-defaults
 rm /usr/share/gnome-initial-setup/vendor.conf
-
-### remove fedora flatpak remote repository
-#flatpak remote-delete fedora
-#flatpak remote-delete fedora-testing
-systemctl disable flatpak-add-fedora-repos.service
-rm /usr/lib/systemd/system/flatpak-add-fedora-repos.service
 
 ### add flathub flatpak remote repository
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
