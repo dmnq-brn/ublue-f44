@@ -24,8 +24,8 @@ SHARED_PACKAGES=(
 GNOME_DESKTOP_PACKAGES=(
     # Gnome minimal desktop
     # ModemManager-glib required by gnome-control-center
-    centos-backgrounds
     dconf
+    desktop-backgrounds-gnome
     fprintd-pam
     flatpak
     gdm
@@ -107,7 +107,7 @@ OPENSSH_SERVER_PACKAGES=(
 )
 
 OPENSSH_CLIENT_PACKAGES=(
-    openssh-client
+    openssh-clients
 )
 
 UNVANTED_PACKAGES=(
