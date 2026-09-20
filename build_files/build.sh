@@ -11,8 +11,13 @@ cp -avf "/ctx/system_files"/. /
 ### Remove unwanted OS package 
 # /ctx/remove-packages.sh
 
-### remove dnf repository
-# rm /etc/yum.repos.d/*.repo
+# Disable all repos (should already be disabled by helpers, but ensure)
+for repo in /etc/yum.repos.d/*.repo; do
+    if [[ -f "$repo" ]]; then
+        sed -i 's@enabled=1@enabled=0@g' "$repo"
+    fi
+done
+
 ### remove gnome-initial-setup defaults configuration
 rm /usr/share/dconf/profile/gnome-initial-setup
 rm /usr/share/gnome-initial-setup/initial-setup-dconf-defaults
