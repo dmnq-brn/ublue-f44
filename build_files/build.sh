@@ -27,6 +27,6 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 flatpak install -y --noninteractive --system flathub com.mattjakeman.ExtensionManager
 flatpak install -y --noninteractive --system flathub page.tesk.Refine
-flatpak install -y --noninteractive --system install flathub net.nokyan.Resources
-flatpak install -y --noninteractive --system install flathub com.google.Chrome
+flatpak install -y --noninteractive --system flathub net.nokyan.Resources
+flatpak install -y --noninteractive --system flathub com.google.Chrome
 
