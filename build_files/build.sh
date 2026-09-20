@@ -5,24 +5,8 @@ set -euxo pipefail
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
 
-### Setup Systemd
-
-### remove systemd unwanted services
-## fedora flatpak remote repository
-systemctl disable flatpak-add-fedora-repos.service
-rm /usr/lib/systemd/system/flatpak-add-fedora-repos.service
-
-# rpm-ostree
-systemctl disable rpm-ostree-countme.service
-rm /usr/lib/systemd/system/rpm-ostree-countme.service
-systemctl disable rpm-ostree-countme.timer
-rm /usr/lib/systemd/system/rpm-ostree-countme.timer
-
 ### Install required OS packages
 /ctx/install-packages.sh
-
-### Remove unwanted OS package 
-# /ctx/remove-packages.sh
 
 # Disable all repos (should already be disabled by helpers, but ensure)
 #for repo in /etc/yum.repos.d/*.repo; do
@@ -30,6 +14,19 @@ rm /usr/lib/systemd/system/rpm-ostree-countme.timer
 #        sed -i 's@enabled=1@enabled=0@g' "$repo"
 #    fi
 #done
+
+### Setup Systemd
+
+### remove systemd unwanted services
+## fedora flatpak remote repository
+systemctl disable flatpak-add-fedora-repos.service
+rm /usr/lib/systemd/system/flatpak-add-fedora-repos.service
+
+## rpm-ostree
+systemctl disable rpm-ostree-countme.service
+rm /usr/lib/systemd/system/rpm-ostree-countme.service
+systemctl disable rpm-ostree-countme.timer
+rm /usr/lib/systemd/system/rpm-ostree-countme.timer
 
 ### remove gnome-initial-setup defaults configuration
 rm /usr/share/dconf/profile/gnome-initial-setup
