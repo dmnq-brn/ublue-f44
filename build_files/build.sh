@@ -12,11 +12,11 @@ cp -avf "/ctx/system_files"/. /
 # /ctx/remove-packages.sh
 
 # Disable all repos (should already be disabled by helpers, but ensure)
-for repo in /etc/yum.repos.d/*.repo; do
-    if [[ -f "$repo" ]]; then
-        sed -i 's@enabled=1@enabled=0@g' "$repo"
-    fi
-done
+#for repo in /etc/yum.repos.d/*.repo; do
+#    if [[ -f "$repo" ]]; then
+#        sed -i 's@enabled=1@enabled=0@g' "$repo"
+#    fi
+#done
 
 ### remove gnome-initial-setup defaults configuration
 rm /usr/share/dconf/profile/gnome-initial-setup
