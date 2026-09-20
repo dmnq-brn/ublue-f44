@@ -181,7 +181,7 @@ UNVANTED_WORKSTATION_PACKAGES=(
 
 # Install required packages
 readarray -t UNINSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${WORKSTATION_PACKAGES[@]}" 2>/dev/null || false)
-if [[ "${#INSTALLED[@]}" -gt 0 ]]; then
+if [[ "${#UNINSTALLED[@]}" -gt 0 ]]; then
     dnf -y --setopt=install_weak_deps=False install "${UNINSTALLED[@]}"
 else
     echo "No  packages found to install."
