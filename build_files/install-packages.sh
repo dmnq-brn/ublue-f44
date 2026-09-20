@@ -180,7 +180,7 @@ UNVANTED_WORKSTATION_PACKAGES=(
 )
 
 # Install required packages
-dnf -y --setopt=install_weak_deps=False install "${UNINSTALLED[@]}"
+dnf -y --setopt=install_weak_deps=False install "${WORKSTATION_PACKAGES[@]}"
 # remove unwanted packages
 
 readarray -t INSTALLED < <(rpm -qa --queryformat='%{NAME}\n' "${UNVANTED_WORKSTATION_PACKAGES[@]}" 2>/dev/null || true)
