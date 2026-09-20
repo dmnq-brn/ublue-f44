@@ -25,12 +25,8 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 ### install flatpack app
 
-#flatpak install flathub org.mozilla.firefox
-#flatpak install flathub net.nokyan.Resources
-flatpak install -y --system flathub com.mattjakeman.ExtensionManager
+flatpak install -y --noninteractive --system flathub com.mattjakeman.ExtensionManager
+flatpak install -y --noninteractive --system flathub page.tesk.Refine
+flatpak install -y --noninteractive --system install flathub net.nokyan.Resources
+flatpak install -y --noninteractive --system install flathub com.google.Chrome
 
-#### Example for enabling a System Unit File
-
-systemctl enable podman.socket
-
-systemctl set-default graphical.target
