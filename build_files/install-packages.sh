@@ -107,7 +107,7 @@ OPENSSH_SERVER_PACKAGES=(
 )
 
 OPENSSH_CLIENT_PACKAGES=(
-    openssh-server
+    openssh-client
 )
 
 UNVANTED_PACKAGES=(
