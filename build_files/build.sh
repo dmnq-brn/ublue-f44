@@ -14,7 +14,7 @@ cp -avf "/ctx/system_files"/. /
 ### remove dnf repository
 # rm /etc/yum.repos.d/*.repo
 ### remove gnome-initial-setup defaults configuration
-rm /usr/share/dconf/gnome-initial-setup
+rm /usr/share/dconf/profile/gnome-initial-setup
 rm /usr/share/gnome-initial-setup/initial-setup-dconf-defaults
 rm /usr/share/gnome-initial-setup/vendor.conf
 
