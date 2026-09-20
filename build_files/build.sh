@@ -27,7 +27,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 #flatpak install flathub org.mozilla.firefox
 #flatpak install flathub net.nokyan.Resources
-flatpak install flathub com.mattjakeman.ExtensionManager
+flatpak install -y --system flathub com.mattjakeman.ExtensionManager
 
 #### Example for enabling a System Unit File
 
