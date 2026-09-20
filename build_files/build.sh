@@ -18,6 +18,7 @@ cp -avf "/ctx/system_files"/. /
 #flatpak remote-delete fedora
 #flatpak remote-delete fedora-testing
 systemctl disable flatpak-add-fedora-repos.service
+rm /usr/lib/systemd/system/flatpak-add-fedora-repos.service
 
 ### add flathub repository
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -26,7 +27,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 #flatpak install flathub org.mozilla.firefox
 #flatpak install flathub net.nokyan.Resources
-#flatpak install flathub com.mattjakeman.ExtensionManager
+flatpak install flathub com.mattjakeman.ExtensionManager
 
 #### Example for enabling a System Unit File
 
