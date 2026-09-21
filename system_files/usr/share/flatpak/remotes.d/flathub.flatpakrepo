@@ -1,6 +1,6 @@
 [Flatpak Repo]
 Title=Flathub
-Url=https://dl.flathub.org/repo/
+Url=https://dl.flathub.org/repo/flathub.flatpakrepo
 Homepage=https://flathub.org/
 Comment=Central repository of Flatpak applications
 Description=Central repository of Flatpak applications
