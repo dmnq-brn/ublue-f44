@@ -34,11 +34,11 @@ rm /usr/share/gnome-initial-setup/initial-setup-dconf-defaults
 rm /usr/share/gnome-initial-setup/vendor.conf
 
 ### add flathub flatpak remote repository
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 ### install flatpack app
-flatpak install -y --noninteractive --system flathub com.mattjakeman.ExtensionManager
-flatpak install -y --noninteractive --system flathub page.tesk.Refine
-flatpak install -y --noninteractive --system flathub net.nokyan.Resources
+#flatpak install -y --noninteractive --system flathub com.mattjakeman.ExtensionManager
+#flatpak install -y --noninteractive --system flathub page.tesk.Refine
+#flatpak install -y --noninteractive --system flathub net.nokyan.Resources
 # flatpak install -y --noninteractive --system flathub com.google.Chrome
 
