@@ -1,3 +1,2 @@
-[org.mozilla.firefox]
-  CollectionID=org.flatpakhub
-  Preinstall=true
+[Flatpak Preinstall org.mozilla.firefox]
+Install=true
