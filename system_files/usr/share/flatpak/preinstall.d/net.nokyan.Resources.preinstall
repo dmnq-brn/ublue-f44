@@ -1,0 +1,3 @@
+[Flatpak Preinstall net.nokyan.Resources]
+Install=true
+IsRuntime=false
