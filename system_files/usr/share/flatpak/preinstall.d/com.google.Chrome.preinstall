@@ -1,3 +1,4 @@
 [Flatpak Preinstall com.google.Chrome]
+Branch=stable
 Install=true
 IsRuntime=false
