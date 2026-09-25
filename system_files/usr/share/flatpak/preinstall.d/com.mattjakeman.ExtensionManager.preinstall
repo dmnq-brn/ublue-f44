@@ -1,3 +1,4 @@
 [Flatpak Preinstall com.mattjakeman.ExtensionManager]
+Branch=stable
 Install=true
 IsRuntime=false
