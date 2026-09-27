@@ -1,4 +1,4 @@
-[unit]
+[Unit]
 Description=Preinstall flatpak applications
 Documentation=man:flatpak-preinstall(1)
 ConditioPathExists=/usr/bin/flatpak
@@ -14,5 +14,5 @@ Restart=on-failure
 ExecStart=/usr/bin/flatpak preinstall -y
 
 [Install]
-Wantedby=multi-user.target
+WantedBy=multi-user.target
 
