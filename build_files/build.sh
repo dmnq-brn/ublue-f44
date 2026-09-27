@@ -15,30 +15,23 @@ cp -avf "/ctx/system_files"/. /
 #    fi
 #done
 
-### Setup Systemd
-
-### remove systemd unwanted services
-## fedora flatpak remote repository
+# Setup Systemd
+## Remove systemd unwanted services
+### fedora flatpak remote repository
 systemctl disable flatpak-add-fedora-repos.service
 rm /usr/lib/systemd/system/flatpak-add-fedora-repos.service
 
-## rpm-ostree
+### rpm-ostree
 systemctl disable rpm-ostree-countme.service
 rm /usr/lib/systemd/system/rpm-ostree-countme.service
 systemctl disable rpm-ostree-countme.timer
 rm /usr/lib/systemd/system/rpm-ostree-countme.timer
 
-### remove gnome-initial-setup defaults configuration
+## Enable systemd required services
+### flatpak preinstall
+systemctl enable flatpak-preinstall.service
+
+# Remove gnome-initial-setup default configuration
 rm /usr/share/dconf/profile/gnome-initial-setup
 rm /usr/share/gnome-initial-setup/initial-setup-dconf-defaults
 rm /usr/share/gnome-initial-setup/vendor.conf
-
-### add flathub flatpak remote repository
-#flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-### install flatpack app
-#flatpak install -y --noninteractive --system flathub com.mattjakeman.ExtensionManager
-#flatpak install -y --noninteractive --system flathub page.tesk.Refine
-#flatpak install -y --noninteractive --system flathub net.nokyan.Resources
-# flatpak install -y --noninteractive --system flathub com.google.Chrome
-
