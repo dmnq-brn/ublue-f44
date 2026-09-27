@@ -1,1 +1,18 @@
+[unit]
+Description=Preinstall flatpak applications
+Documentation=man:flatpak-preinstall(1)
+ConditioPathExists=/usr/bin/flatpak
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=600
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+Restart=on-failure
+ExecStart=/usr/bin/flatpak preinstall -y
+
+[Install]
+Wantedby=multi-user.target
 
