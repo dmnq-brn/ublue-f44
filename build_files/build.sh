@@ -17,6 +17,7 @@ cp -avf "/ctx/system_files"/. /
 
 # Setup Systemd
 ## Remove systemd unwanted services
+
 ### fedora flatpak remote repository
 systemctl disable flatpak-add-fedora-repos.service
 rm /usr/lib/systemd/system/flatpak-add-fedora-repos.service
