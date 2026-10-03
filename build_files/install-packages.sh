@@ -50,10 +50,10 @@ GNOME_DESKTOP_PACKAGES=(
     # totem-pl-parser
     tracker
     tracker-miners
-    xdg-desktop-portal
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
     xdg-user-dirs-gtk
+    xdg-utils
     # yelp-tools
 )
 
