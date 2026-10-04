@@ -12,6 +12,7 @@ on:
       platform:
         required: true
         type: choice
+        default: amd64
         options:
           - amd64
           - arm64
