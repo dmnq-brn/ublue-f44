@@ -10,7 +10,7 @@ on:
         default: false
         type: boolean
       platform:
-        required: true
+        required: false
         type: choice
         default: amd64
         options:
